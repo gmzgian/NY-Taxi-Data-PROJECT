@@ -14,11 +14,7 @@ Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.15.0-1027-gcp x86_64)
 
   System information as of Mon Jan 30 11:00:15 UTC 2023
 
-  System load:  0.03               Users logged in:                  1
-  Usage of /:   37.8% of 28.89GB   IPv4 address for br-3b8337be7a04: 172.19.0.1
-  Memory usage: 5%                 IPv4 address for docker0:         172.17.0.1
-  Swap usage:   0%                 IPv4 address for ens4:            10.132.0.2
-  Processes:    157
+
 
  * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
    just raised the bar for easy, resilient and secure K8s cluster deployment.
@@ -31,8 +27,6 @@ To see these additional updates run: apt list --upgradable
 New release '22.04.1 LTS' available.
 Run 'do-release-upgrade' to upgrade to it.
 
-
-Last login: Mon Jan 30 10:53:46 2023 from 212.102.54.109
 (base) gian@de-zoomcamp:~$ ls
 Anaconda3-2022.10-Linux-x86_64.sh  bin                        snap
 anaconda3                          data-engineering-zoomcamp
@@ -50,15 +44,14 @@ cohorts              week_3_data_warehouse
 (base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup$ cd 2_docker_sql/
 (base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql$ wget https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv
 --2023-01-30 11:07:09--  https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv
-Resolving s3.amazonaws.com (s3.amazonaws.com)... 52.217.166.40, 52.217.41.198, 52.217.83.102, ...
-Connecting to s3.amazonaws.com (s3.amazonaws.com)|52.217.166.40|:443... connected.
+Resolving s3.amazonaws.com (s3.amazonaws.com)... , ...
+Connecting to s3.amazonaws.com (s3.amazonaws.com)||:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 12322 (12K) [application/octet-stream]
 Saving to: ‘taxi+_zone_lookup.csv’
 
 taxi+_zone_lookup.csv  100%[=========================>]  12.03K  --.-KB/s    in 0s
 
-2023-01-30 11:07:09 (32.6 MB/s) - ‘taxi+_zone_lookup.csv’ saved [12322/12322]
 
 (base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql$ client_loop: send disconnect: Connection reset by peer
 
@@ -72,11 +65,6 @@ Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.15.0-1027-gcp x86_64)
 
   System information as of Mon Jan 30 13:25:45 UTC 2023
 
-  System load:  0.0                Users logged in:                  1
-  Usage of /:   38.7% of 28.89GB   IPv4 address for br-3b8337be7a04: 172.19.0.1
-  Memory usage: 9%                 IPv4 address for docker0:         172.17.0.1
-  Swap usage:   0%                 IPv4 address for ens4:            10.132.0.2
-  Processes:    164
 
  * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
    just raised the bar for easy, resilient and secure K8s cluster deployment.
@@ -90,7 +78,7 @@ New release '22.04.1 LTS' available.
 Run 'do-release-upgrade' to upgrade to it.
 
 
-Last login: Mon Jan 30 11:51:01 2023 from 212.102.54.109
+Last login: Mon Jan 30 11:51:01 2023
 (base) gian@de-zoomcamp:~$ ls
 Anaconda3-2022.10-Linux-x86_64.sh  anaconda3  bin  data-engineering-zoomcamp  snap
 (base) gian@de-zoomcamp:~$ cd data-engineering-zoomcamp/
@@ -182,13 +170,6 @@ root@localhost:ny_taxi> select "DOLocationID" from green_taxi_data where "PULoca
 SELECT 0
 Time: 0.145s
 
-root@localhost:ny_taxi> select "DOLocationID" from green_taxi_data where "PULocationID"=7 and tip_amount=(sel
-+--------------+
-| DOLocationID |
-|--------------|
-+--------------+
-SELECT 0
-Time: 0.145s
 
     root@localhost:ny_taxi> select COUNT(1) from green_taxi_data_zones;
 +-------+
