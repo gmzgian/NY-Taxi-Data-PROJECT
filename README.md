@@ -1,7 +1,8 @@
-# de-zoomcamp2023
+# hw1
 
 
-GIT BASH commands + Jupiter notebook notes below:
+**SQL+Docker:**
+GIT BASH commands + Jupiter notebook notes below.
 
 GIT BASH commands show when I was checking if data was correctly loaded. I accidentaly closed the Git bash window with SQL queries up to answer 5. I was not able to resolve answer 6 (can see the SQL below), so I selected a random answer. 
 
@@ -202,7 +203,10 @@ from sqlalchemy import create_engine
 
 engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
 
-JUPITER NOTEBOOK2 import pandas as pd
+JUPITER NOTEBOOK2 
+
+
+import pandas as pd
 
 df2 = pd.read_csv('taxi+_zone_lookup.csv', nrows=100)
 
@@ -251,3 +255,6 @@ while True:
     df.to_sql(name='green_taxi_data', con=engine, if_exists='append')
     
     print('insterted another chunk...')
+    
+    
+    **Terraform**
