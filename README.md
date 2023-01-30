@@ -1,9 +1,9 @@
 # de-zoomcamp2023
 
 
+GIT BASH commands + Jupiter notebook notes below:
 
-
-GIT BASH, checking if data i loaded, I accidentaly closed the Git bash window with SQL queries up to answer 5. I was not able to resolve answer 6 (can see the SQL below), so I selected a random answer. 
+GIT BASH shows when I was checking if data was correctly loaded. I accidentaly closed the Git bash window with SQL queries up to answer 5. I was not able to resolve answer 6 (can see the SQL below), so I selected a random answer. 
 gianz@415DATA MINGW64 ~
 $ ssh de-zoomcamp
 Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.15.0-1027-gcp x86_64)
