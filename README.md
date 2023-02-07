@@ -1,370 +1,41 @@
-# hw1
+# hw2
 
 
-**SQL+Docker:**
-GIT BASH commands + Jupiter notebook notes below.
-
-GIT BASH commands show when I was checking if data was correctly loaded. I accidentaly closed the Git bash window with SQL queries up to answer 5. I was not able to resolve answer 6 (can see the SQL below), so I selected a random answer. 
-
-
-
-gianz@415DATA MINGW64 ~
-$ ssh de-zoomcamp
-Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.15.0-1027-gcp x86_64)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-  System information as of Mon Jan 30 11:00:15 UTC 2023
-
-
-
- * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
-   just raised the bar for easy, resilient and secure K8s cluster deployment.
-
-   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
-
-4 updates can be applied immediately.
-To see these additional updates run: apt list --upgradable
-
-New release '22.04.1 LTS' available.
-Run 'do-release-upgrade' to upgrade to it.
-
-(base) gian@de-zoomcamp:~$ ls
-Anaconda3-2022.10-Linux-x86_64.sh  bin                        snap
-anaconda3                          data-engineering-zoomcamp
-(base) gian@de-zoomcamp:~$ cd data-engineering-zoomcamp/
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp$ ls
-README.md            dataset.md                     week_4_analytics_engineering
-after-sign-up.md     images                         week_5_batch_processing
-arch_diagram.md      week_1_basics_n_setup          week_6_stream_processing
-asking-questions.md  week_2_workflow_orchestration  week_7_project
-cohorts              week_3_data_warehouse
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp$ cd week_1_basics_n_setup/
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup$ ls
-1_terraform_gcp  2_docker_sql  README.md
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup$ ^C
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup$ cd 2_docker_sql/
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql$ wget https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv
---2023-01-30 11:07:09--  https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv
-Resolving s3.amazonaws.com (s3.amazonaws.com)... , ...
-Connecting to s3.amazonaws.com (s3.amazonaws.com)||:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 12322 (12K) [application/octet-stream]
-Saving to: ‘taxi+_zone_lookup.csv’
-
-taxi+_zone_lookup.csv  100%[=========================>]  12.03K  --.-KB/s    in 0s
-
-
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql$ client_loop: send disconnect: Connection reset by peer
-
-gianz@415DATA MINGW64 ~
-$ ssh de-zoomcamp
-Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.15.0-1027-gcp x86_64)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-  System information as of Mon Jan 30 13:25:45 UTC 2023
-
-
- * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
-   just raised the bar for easy, resilient and secure K8s cluster deployment.
-
-   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
-
-4 updates can be applied immediately.
-To see these additional updates run: apt list --upgradable
-
-New release '22.04.1 LTS' available.
-Run 'do-release-upgrade' to upgrade to it.
-
-
-Last login: Mon Jan 30 11:51:01 2023
-(base) gian@de-zoomcamp:~$ ls
-Anaconda3-2022.10-Linux-x86_64.sh  anaconda3  bin  data-engineering-zoomcamp  snap
-(base) gian@de-zoomcamp:~$ cd data-engineering-zoomcamp/
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp$ ls
-README.md            cohorts                week_2_workflow_orchestration  week_6_stream_processing
-after-sign-up.md     dataset.md             week_3_data_warehouse          week_7_project
-arch_diagram.md      images                 week_4_analytics_engineering
-asking-questions.md  week_1_basics_n_setup  week_5_batch_processing
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp$ cd week_1_basics_n_setup/
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup$ ls
-1_terraform_gcp  2_docker_sql  README.md
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup$ ^C
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup$ cd 2_docker_sql/
-(base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql$ pgcli -h localhost -p 5432 -u root -d ny_taxi
-Load your password from keyring returned:
-No recommended backend was available. Install a recommended 3rd party backend package; or, install the keyrings.alt package if you want to use the non-recommended backends. See https://pypi.org/project/keyring for details.
-To remove this message do one of the following:
-- prepare keyring as described at: https://keyring.readthedocs.io/en/stable/
-- uninstall keyring: pip uninstall keyring
-- disable keyring in our configuration: add keyring = False to [main]
-Password for root:
-Set password in keyring returned:
-No recommended backend was available. Install a recommended 3rd party backend package; or, install the keyrings.alt package if you want to use the non-recommended backends. See https://pypi.org/project/keyring for details.
-To remove this message do one of the following:
-- prepare keyring as described at: https://keyring.readthedocs.io/en/stable/
-- uninstall keyring: pip uninstall keyring
-- disable keyring in our configuration: add keyring = False to [main]
-Server: PostgreSQL 13.9 (Debian 13.9-1.pgdg110+1)
-Version: 3.5.0
-Home: http://pgcli.com
-root@localhost:ny_taxi> \d green_taxi_data_zones
-+--------------+--------+-----------+
-| Column       | Type   | Modifiers |
-|--------------+--------+-----------|
-| index        | bigint |           |
-| LocationID   | bigint |           |
-| Borough      | text   |           |
-| Zone         | text   |           |
-| service_zone | text   |           |
-+--------------+--------+-----------+
-Indexes:
-    "ix_green_taxi_data_zones_index" btree (index)
-
-Time: 0.022s
-root@localhost:ny_taxi> \d green_taxi_data
-+-----------------------+-----------------------------+-----------+
-| Column                | Type                        | Modifiers |
-|-----------------------+-----------------------------+-----------|
-| index                 | bigint                      |           |
-| VendorID              | bigint                      |           |
-| lpep_pickup_datetime  | timestamp without time zone |           |
-| lpep_dropoff_datetime | timestamp without time zone |           |
-| store_and_fwd_flag    | text                        |           |
-| RatecodeID            | bigint                      |           |
-| PULocationID          | bigint                      |           |
-| DOLocationID          | bigint                      |           |
-| passenger_count       | bigint                      |           |
-| trip_distance         | double precision            |           |
-| fare_amount           | double precision            |           |
-| extra                 | double precision            |           |
-| mta_tax               | double precision            |           |
-| tip_amount            | double precision            |           |
-| tolls_amount          | double precision            |           |
-| ehail_fee             | double precision            |           |
-| improvement_surcharge | double precision            |           |
-| total_amount          | double precision            |           |
-| payment_type          | bigint                      |           |
-| trip_type             | bigint                      |           |
-| congestion_surcharge  | double precision            |           |
-+-----------------------+-----------------------------+-----------+
-Indexes:
-    "ix_green_taxi_data_index" btree (index)
-Time: 0.014s
-root@localhost:ny_taxi> select
-root@localhost:ny_taxi> select "DOLocationID" from green_taxi_data where green_taxi_data."PULocationID"=7 and tip_amount=(select MAX(tip_amount) from green_ta
- xi_data);
-+--------------+
-| DOLocationID |
-|--------------|
-+--------------+
-SELECT 0
-Time: 0.146s
-root@localhost:ny_taxi>
-root@localhost:ny_taxi> select "DOLocationID" from green_taxi_data where "PULocationID"=7 and tip_amount=(select MAX(tip_amount) from green_taxi_data);
-+--------------+
-| DOLocationID |
-|--------------|
-+--------------+
-SELECT 0
-Time: 0.145s
-
-
-    root@localhost:ny_taxi> select COUNT(1) from green_taxi_data_zones;
-+-------+
-| count |
-|-------|
-| 265   |
-+-------+
-SELECT 1
-Time: 0.007s
-root@localhost:ny_taxi>
-
-JUPITER Notebook1:
-import pands as pd
-
+Question 1 code:
+from pathlib import Path
 import pandas as pd
+from prefect import flow, task
+from prefect_gcp.cloud_storage import GcsBucket
+from random import randint
 
-pd.__version__
+@task(retries=3)
+def fetch(dataset_url: str) -> pd.DataFrame:
+    """Read taxi data from web into pandas DataFrame"""
+    # if randint(0, 1) > 0:
+    #     raise Exception
+    df = pd.read_csv(dataset_url)
+    return df
 
-df = pd.read_csv('green_tripdata_2019-01.csv.gz', nrows=100)
+@task(log_prints=True)
+def clean(df: pd.DataFrame) -> pd.DataFrame:
+    """Fix dtype issues"""
+    df["lpep_pickup_datetime"] = pd.to_datetime(df["lpep_pickup_datetime"])
+    df["lpep_dropoff_datetime"] = pd.to_datetime(df["lpep_dropoff_datetime"])
+    print(df.head(2))
+    print(f"columns: {df.dtypes}")
+    print(f"rows: {len(df)}")
+    return df
 
-print(pd.io.sql.get_schema(df, name='green_taxi_data', con=engine))
+@flow()
+def etl_web_to_gcs() -> None:
+    """The main ETL function"""
+    color = "green"
+    year = 2020
+    month = 1
+    dataset_file = f"{color}_tripdata_{year}-{month:02}"
+    dataset_url = f"https://github.com/DataTalksClub/nyc-tlc-data/releases/download/{color}/{dataset_file}.csv.gz"
 
-df.lpep_pickup_datetime=pd.to_datetime(df.lpep_pickup_datetime)
-df.lpep_dropoff_datetime=pd.to_datetime(df.lpep_dropoff_datetime)
-
-from sqlalchemy import create_engine
-
-engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
-
-JUPITER NOTEBOOK2 
-
-
-import pandas as pd
-
-df2 = pd.read_csv('taxi+_zone_lookup.csv', nrows=100)
-
-print(pd.io.sql.get_schema(df2, name='green_taxi_data_zones', con=engine))
-
-engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
-
-from sqlalchemy import create_engine
-
-engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
-
-print(pd.io.sql.get_schema(df2, name='green_taxi_data_zones', con=engine))
-
-df2= next(df_iter2)
-
-df_iter2= pd.read_csv('taxi+_zone_lookup.csv', iterator=True, chunksize=100000)
-
-df2= next(df_iter2)
-
-len(df2)
-
-df2.head()
-
-df2.to_sql(name='green_taxi_data_zones', con=engine, if_exists='replace')
-
-
-print(pd.io.sql.get_schema(df2, name='green_taxi_data_zones', con=engine))
-
-df = next(df_iter)
-
-len(df)
-
-df.lpep_pickup_datetime=pd.to_datetime(df.lpep_pickup_datetime)
-df.lpep_dropoff_datetime=pd.to_datetime(df.lpep_dropoff_datetime)
-
-df.head(n=0).to_sql(name='green_taxi_data', con=engine, if_exists='replace')
-
-%time df.to_sql(name='green_taxi_data', con=engine, if_exists='append')
-
-while True:
-    df = next(df_iter)
-    
-    df.lpep_pickup_datetime=pd.to_datetime(df.lpep_pickup_datetime)
-    df.lpep_dropoff_datetime=pd.to_datetime(df.lpep_dropoff_datetime)
-    
-    df.to_sql(name='green_taxi_data', con=engine, if_exists='append')
-    
-    print('insterted another chunk...')
-    
-    
-    
-   **Terraform**
-   
-   
-   
-   (base) gian@de-zoomcamp:~/data-engineering-zoomcamp/week_1_basics_n_setup/1_terraform_gcp/terraform$ terraform apply
-var.project
-  Your GCP Project ID
-
-  Enter a value: local-bliss-3412
-
-
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
-  + create
-
-Terraform will perform the following actions:
-
-  # google_bigquery_dataset.dataset will be created
-  + resource "google_bigquery_dataset" "dataset" {
-      + creation_time              = (known after apply)
-      + dataset_id                 = "trips_data_all"
-      + delete_contents_on_destroy = false
-      + etag                       = (known after apply)
-      + id                         = (known after apply)
-      + labels                     = (known after apply)
-      + last_modified_time         = (known after apply)
-      + location                   = "europe-west6"
-      + project                    = "local-bliss-3412"
-      + self_link                  = (known after apply)
-
-      + access {
-          + domain         = (known after apply)
-          + group_by_email = (known after apply)
-          + role           = (known after apply)
-          + special_group  = (known after apply)
-          + user_by_email  = (known after apply)
-
-          + dataset {
-              + target_types = (known after apply)
-
-              + dataset {
-                  + dataset_id = (known after apply)
-                  + project_id = (known after apply)
-                }
-            }
-
-          + routine {
-              + dataset_id = (known after apply)
-              + project_id = (known after apply)
-              + routine_id = (known after apply)
-            }
-
-          + view {
-              + dataset_id = (known after apply)
-              + project_id = (known after apply)
-              + table_id   = (known after apply)
-            }
-        }
-    }
-
-  # google_storage_bucket.data-lake-bucket will be created
-  + resource "google_storage_bucket" "data-lake-bucket" {
-      + force_destroy               = true
-      + id                          = (known after apply)
-      + location                    = "EUROPE-WEST6"
-      + name                        = "dtc_data_lake_local-bliss-3412"
-      + project                     = (known after apply)
-      + public_access_prevention    = (known after apply)
-      + self_link                   = (known after apply)
-      + storage_class               = "STANDARD"
-      + uniform_bucket_level_access = true
-      + url                         = (known after apply)
-
-      + lifecycle_rule {
-          + action {
-              + type = "Delete"
-            }
-
-          + condition {
-              + age                   = 30
-              + matches_prefix        = []
-              + matches_storage_class = []
-              + matches_suffix        = []
-              + with_state            = (known after apply)
-            }
-        }
-
-      + versioning {
-          + enabled = true
-        }
-
-      + website {
-          + main_page_suffix = (known after apply)
-          + not_found_page   = (known after apply)
-        }
-    }
-
-Plan: 2 to add, 0 to change, 0 to destroy.
-
-Do you want to perform these actions?
-  Terraform will perform the actions described above.
-  Only 'yes' will be accepted to approve.
-
-  Enter a value: yes
-
-google_bigquery_dataset.dataset: Creating...
-google_storage_bucket.data-lake-bucket: Creating...
-google_storage_bucket.data-lake-bucket: Creation complete after 1s [id=dtc_data_lake_local-bliss-3412]
-google_bigquery_dataset.dataset: Creation complete after 2s [id=projects/local-bliss-3412/datasets/trips_data_all]
-
-Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+    df = fetch(dataset_url)
+    df_clean = clean(df)
+if __name__ == "__main__":
+    etl_web_to_gcs()
