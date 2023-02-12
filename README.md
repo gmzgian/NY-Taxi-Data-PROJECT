@@ -1,42 +1,30 @@
-# hw2
+# hw3
 
 
-**Question 1 code:**
+CREATE OR REPLACE EXTERNAL TABLE `local-bliss-375412.dezoomcamp.external_fhv_tripdata`
+OPTIONS (
+  format = 'CSV',
+  uris = ['gs://dtc_data_lake_local-bliss-375412/Home/fhv_tripdata_2019-*.csv.gz']
+);
 
-from pathlib import Path
-import pandas as pd
-from prefect import flow, task
-from prefect_gcp.cloud_storage import GcsBucket
-from random import randint
+select * from `local-bliss-375412.dezoomcamp.external_fhv_tripdata` limit 10;
 
-@task(retries=3)
-def fetch(dataset_url: str) -> pd.DataFrame:
-    """Read taxi data from web into pandas DataFrame"""
-    # if randint(0, 1) > 0:
-    #     raise Exception
-    df = pd.read_csv(dataset_url)
-    return df
+select count (1) from `local-bliss-375412.dezoomcamp.external_fhv_tripdata`;
 
-@task(log_prints=True)
-def clean(df: pd.DataFrame) -> pd.DataFrame:
-    """Fix dtype issues"""
-    df["lpep_pickup_datetime"] = pd.to_datetime(df["lpep_pickup_datetime"])
-    df["lpep_dropoff_datetime"] = pd.to_datetime(df["lpep_dropoff_datetime"])
-    print(df.head(2))
-    print(f"columns: {df.dtypes}")
-    print(f"rows: {len(df)}")
-    return df
+CREATE or replace TABLE `local-bliss-375412.dezoomcamp.fhv_tripdata`
+as select * from `local-bliss-375412.dezoomcamp.external_fhv_tripdata`;
 
-@flow()
-def etl_web_to_gcs() -> None:
-    """The main ETL function"""
-    color = "green"
-    year = 2020
-    month = 1
-    dataset_file = f"{color}_tripdata_{year}-{month:02}"
-    dataset_url = f"https://github.com/DataTalksClub/nyc-tlc-data/releases/download/{color}/{dataset_file}.csv.gz"
+select count(distinct Affiliated_base_number) from `local-bliss-375412.dezoomcamp.fhv_tripdata`;
+select count(distinct Affiliated_base_number) from `local-bliss-375412.dezoomcamp.external_fhv_tripdata`;
 
-    df = fetch(dataset_url)
-    df_clean = clean(df)
-if __name__ == "__main__":
-    etl_web_to_gcs()
+select count(1) from `local-bliss-375412.dezoomcamp.external_fhv_tripdata`
+where PUlocationID is null and DOlocationID is null;
+
+CREATE OR REPLACE TABLE `local-bliss-375412.dezoomcamp.fhv_tripdata_part_clus`
+PARTITION BY DATE(pickup_datetime)
+CLUSTER BY Affiliated_base_number AS
+SELECT * FROM `local-bliss-375412.dezoomcamp.fhv_tripdata`;
+
+select distinct Affiliated_base_number
+from `local-bliss-375412.dezoomcamp.fhv_tripdata_part_clus`
+where pickup_datetime BETWEEN '2019-03-01' AND '2019-03-31';
