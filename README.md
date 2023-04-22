@@ -31,7 +31,7 @@ The data is transformed in ready-to-analyze tables that allow simple data visual
 3. Made sure the follwing software is installed in the machine: Docker and Docker-Compose, Python 3 (e.g. via Anaconda), Terraform.
 4. Created a Python script that uploads the NY Taxi data directly from the web -> [web_to_gcs_script.py](https://github.com/gmzgian/NY-Taxi-Data-PROJECT/blob/1786bc520905546e7e52296142c57cb3a4da0135/Python_Script_for_Upload/web_to_gcs_script.py). This code extracts csv files, transforms them into .parquet (more efficient way to store and process data) and than uploads such files into Google Cloud Storage. In my code I take Yellow and Green taxi rides for 2019 and 2020.
 5. Transferred the parquet files from GCS to BigQuery.
-6. I developed a Dbt flow where I transform and clean the data. See [README.md](https://github.com/gmzgian/NY-Taxi-Data-PROJECT/blob/424f23d47ea6dcff72ac3fdfd2b1ecb8bd5c14a9/DBT/README.md) for detailed steps. Once the Dbt flow has run, it returns new, cleaned and ready-to-analyze tables into Google BigQuery again.
+6. I developed a Dbt project where I transform and clean the data. See [README.md](https://github.com/gmzgian/NY-Taxi-Data-PROJECT/blob/424f23d47ea6dcff72ac3fdfd2b1ecb8bd5c14a9/DBT/README.md) for detailed steps. Once the Dbt flow has run, it returns new, cleaned and ready-to-analyze tables into Google BigQuery again.
 7. Connected to such tables using Looker Studio and developed a dashboard that visualizes NY Taxi data [Dashboard](https://lookerstudio.google.com/reporting/ac652e29-8e51-4b6b-bf07-f1c3b53f619a/page/ahdGD). In the dashboard, I analyze Yellow and Green NY Taxi rides from 2019 to 2020, displaying how also COVID-19 impacted the taxi business. 
 
 
