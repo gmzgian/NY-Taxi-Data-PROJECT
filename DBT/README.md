@@ -1,8 +1,8 @@
-## Setting up dbt for using BigQuery
+## Setting up dbt to use it with BigQuery
 You will need to create a dbt cloud account using [this link](https://www.getdbt.com/signup/) and connect to your warehouse following [these instructions](https://docs.getdbt.com/docs/cloud/manage-access/set-up-bigquery-oauth). More detailed instructions in [here](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/92917ec5d4eb8da1ed07c498685b80d03f06b7f5/week_4_analytics_engineering/dbt_cloud_setup.md).
 
-## Starting a Dbt project
-### Using BigQuery + dbt cloud
+### Starting a Dbt project
+Using BigQuery + dbt cloud
 - Starting a new project with dbt init (dbt cloud and core)
 - dbt cloud setup
 - project.yml
