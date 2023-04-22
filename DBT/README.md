@@ -17,6 +17,7 @@ Using BigQuery + dbt cloud
 - Packages
 - Variables
 [Video](https://www.youtube.com/watch?v=UVI30Vxzd6c&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=37)
+
 ### Testing and documenting dbt models
 - Tests
 - Documentation
