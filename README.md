@@ -8,16 +8,15 @@ The New York taxi website contains a vast amount of data that can provide valuab
 To create a more manageable data format, a data pipeline can be used to extract data from the New York taxi website providing a more structured and organized format for the data.
 The data is transformed in ready-to-analyze tables that allow simple data visualizion, enabling users to easily explore and understand the data.
 
-# Dashboard
+# Dashboard 📈
 **[Link to the live, interactive dashboard](https://lookerstudio.google.com/reporting/ac652e29-8e51-4b6b-bf07-f1c3b53f619a/page/ahdGD)**
 
 # Technologies 🔩
 * Cloud - [Google Cloud Platform](https://cloud.google.com/)
 * Infrastructure as Code software - [Terraform](https://www.terraform.io/)
-* Containerization - [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/)
 * Batch Processing - [Python](https://www.python.org/)
 * Data Lake - [Google Cloud Storage](https://cloud.google.com/storage)
-* Data Warehouse - [BigQuery](https://cloud.google.com/bigquery)
+* Data Warehouse - [Google BigQuery](https://cloud.google.com/bigquery)
 * Transformation - [Dbt](https://www.getdbt.com/)
 * Data Visualization - [Looker Studio](https://cloud.google.com/looker-studio)
 
