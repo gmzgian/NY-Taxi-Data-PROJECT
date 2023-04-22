@@ -36,4 +36,4 @@ The data is transformed in ready-to-analyze tables that allow simple data visual
 
 
 
-Thank you for taking the time read about my project!
+Thank you for taking the time to read about my project!
