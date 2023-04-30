@@ -1,5 +1,5 @@
 # NY Taxi Data PROJECT
-Data pipeline that loads, transforms and analyzes official NY Taxi data. # 🚕
+Data pipeline that loads, transforms and analyzes official NY Taxi data.
 
 ## Problem 📛
 The New York taxi website contains a vast amount of data that can provide valuable insights into taxi usage patterns and trends. However, accessing and making sense of this data can be a challenging task. The data is often in a raw and unstructured format, making it difficult to work with and analyze effectively.
