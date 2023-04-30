@@ -7,14 +7,14 @@ The New York taxi website contains a vast amount of data that can provide valuab
 ## Solution 🧪️
 To create a more manageable data format, a data pipeline can be used to extract data from the New York taxi website providing a more structured and organized format for the data.
 The data is transformed in ready-to-analyze tables that allow simple data visualizion, enabling users to easily explore and understand the data.
+### Data Pipeline 🪜
+![Transformation_Flow](https://github.com/gmzgian/NY-Taxi-Data-PROJECT/blob/b752099514097301623bbc146905652b2b87ed9c/Images/data%20pipeline%20NY%20taxi.jpg)
 
 ### Dashboard 📈
 **[Link to the live, interactive dashboard](https://lookerstudio.google.com/reporting/ac652e29-8e51-4b6b-bf07-f1c3b53f619a/page/ahdGD)**
 
 ![Dashboard](https://github.com/gmzgian/NY-Taxi-Data-PROJECT/blob/main/Images/NY%20Taxi%20-%20Looker%20Studio.jpg)
 
-### Data Pipeline 🪜
-![Transformation_Flow](https://github.com/gmzgian/NY-Taxi-Data-PROJECT/blob/b752099514097301623bbc146905652b2b87ed9c/Images/data%20pipeline%20NY%20taxi.jpg)
 
 ## Technologies 🔩
 * Cloud - [Google Cloud Platform](https://cloud.google.com/)
